@@ -1,0 +1,109 @@
+<mvc:View controllerName="bpcarriers.controller.Resources"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:ux="sap.uxap"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+
+    <Page showNavButton="true" title="{name1}" navButtonPress="onNavBack">
+        <content>
+            <Panel id="_IDGenPanel1">
+                <form:SimpleForm id="generalInfoForm" editable="false" layout="ColumnLayout" title="{i18n>generalInfo}" columnsM="2" columnsL="3" columnsXL="4" class="sapUiTinyMarginTop">
+                    <form:content>
+                        <Label text="{i18n>name}"/>
+                        <Text text="{name1}" />
+                        <Label text="{i18n>country}"/>
+                        <Text text="{land1}" />
+                        <Label text="{i18n>city}"/>
+                        <Text text="{ort01}" />
+                        <Label text="{i18n>address}"/>
+                        <Text text="{stras}" />
+                        <Label text="{i18n>transport_zone}"/>
+                        <Text text="{transport_zone}" />
+                        <Label text="{i18n>vat_no}"/>
+                        <Text text="{stceg}" />
+                    </form:content>
+                </form:SimpleForm>
+                <form:SimpleForm id="driversForm" maxContainerCols="1" layout="ResponsiveGridLayout" editable="false" title="{i18n>drivers}" columnsM="2" columnsL="3" columnsXL="4">
+                    <form:content>
+                        <Table id="driversTable" noDataText="{appView>/driversTableNoDataText}" growing="true" width="100%" class="sapFDynamicPageAlignContent" items="{toxTQAxBP_CARRIER_DRIVERS}" busyIndicatorDelay="{appView>/delay}">
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <ToolbarSpacer />
+                                    <SearchField id="driversSearchField" placeholder="{i18n>searchForDrivers}" search="onSearchDriversChange" width="auto" class="sapUiSmallMargin" />
+                                    <Button enabled="true" text="{i18n>add}" press="onCreateDrivers" />
+                                </OverflowToolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column>
+                                    <Text text="{i18n>name}" />
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>age}" />
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>contact}" />
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>landx}" />
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>createdOn}" />
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>usrStatus}" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem type="Navigation" press="onPressDriverDetail">
+                                    <cells>
+                                        <ObjectIdentifier text="{name}" />
+                                        <ObjectIdentifier text="{path: 'birth_date', formatter: '.formatter.getAge'}" />
+                                        <ObjectIdentifier text="{contact}" />
+                                        <ObjectIdentifier text="{landx}" />
+                                        <ObjectIdentifier text="{path: 'erdat', formatter: '.formatter.dateFormat'}" />
+                                        <ObjectStatus text="{usr_status_desc}" state="{path: 'usr_status', formatter: '.formatter.usrStatus'}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </form:content>
+                </form:SimpleForm>
+                <form:SimpleForm id="equipmentsForm" maxContainerCols="1" layout="ResponsiveGridLayout" editable="false" title="{i18n>fleet}" columnsM="2" columnsL="3" columnsXL="4">
+                    <form:content>
+                        <Table id="equipmentsTable" width="100%" noDataText="{appView>/equipmentTableNoDataText}" growing="true" class="sapFDynamicPageAlignContent" items="{toxTQAxCARRIER_EQUIPMENTS}" busyIndicatorDelay="{appView>/delay}">
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <ToolbarSpacer />
+                                    <SearchField id="equipmentSearchField" placeholder="{i18n>searchForEquipments}" search="onSearchEquipmentsChange" width="auto" class="sapUiSmallMargin" />
+                                    <Button enabled="true" text="{i18n>add}" press="onCreateEquipments" />
+                                </OverflowToolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column>
+                                    <Text text="{i18n>equi}" />
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>equipment_type}" />
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>equipment_status}" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem type="Navigation" press="onPressEquipmentDetail">
+                                    <cells>
+                                        <ObjectIdentifier text="{eqktx}" />
+                                        <ObjectIdentifier text="{eartx}" />
+                                        <ObjectStatus text="{equi_status_desc}" state="{path: 'equi_status', formatter: '.formatter.equipmentStatus'}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </form:content>
+                </form:SimpleForm>
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>

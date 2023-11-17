@@ -1,0 +1,28 @@
+<mvc:View controllerName="bpcarriers.controller.Carriers"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:f="sap.f"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable">
+    <f:DynamicPage id="page" headerPinned="true">
+        <f:header>
+            <f:DynamicPageHeader id="dynamicHeader">
+                <Input id="variantInput" type="Text" value="{Main>/variantInput}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="onShowVariantList" class="variantMode" valueHelpIconSrc="sap-icon://dropdown" width="9%" />
+                <smartFilterBar:SmartFilterBar id="smartFilterBarGroups" initialise="onFBarInitialise" entitySet="xTQAxCARRIERS_LVP" filterChange="onFilterChange" />
+            </f:DynamicPageHeader>
+        </f:header>
+        <!-- <f:content>
+            <smartTable:SmartTable id="_IDGenSmartTable1" showDetailsButton="true" class="sapUiResponsiveContentPadding" entitySet="xTQAxCARRIERS_LVP" enableAutoBinding="true" enableAutoColumnWidth="true" header="{i18n>carriersTableTitle}" smartFilterId="smartFilterBar2" showRowCount="true" showFullScreenButton="true" tableType="ResponsiveTable">
+                <Table id="_IDGenTable1" mode="SingleSelectLeft">
+                    <items>
+                        <ColumnListItem id="_IDGenColumnListItem1" type="Navigation" press="onPressCarrierDetail" />
+                    </items>
+                </Table>
+                <smartTable:layoutData>
+                    <FlexItemData id="_IDGenFlexItemData1" growFactor="1" baseSize="0%" />
+                </smartTable:layoutData>
+            </smartTable:SmartTable>
+        </f:content> -->
+    </f:DynamicPage>
+</mvc:View>

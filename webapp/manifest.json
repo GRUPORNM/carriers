@@ -1,0 +1,161 @@
+{
+  "_version": "1.49.0",
+  "sap.app": {
+    "id": "bpcarriers",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.10.1",
+      "toolsId": "7b9bf725-fb62-4de9-ad3e-5b97e35b199d"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/tqa/BP_CARRIERS_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "/TQA/OD_BP_CARRIERS_ANNO_MDL",
+            "annotation"
+          ],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "/TQA/OD_BP_CARRIERS_ANNO_MDL": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='%2FTQA%2FOD_BP_CARRIERS_ANNO_MDL',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService//TQA/OD_BP_CARRIERS_ANNO_MDL.xml"
+        }
+      },
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "fullWidth": true,
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.117.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "bpcarriers.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "bpcarriers.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "carriers",
+          "pattern": "",
+          "target": [
+            "carriers"
+          ]
+        },
+        {
+          "name": "resources",
+          "pattern": "xTQAxCARRIERS_LVP/{objectId}",
+          "target": [
+            "resources"
+          ]
+        },
+        {
+          "name": "NotFound",
+          "pattern": "NotFound",
+          "target": "NotFound"
+        }
+      ],
+      "targets": {
+        "carriers": {
+          "viewId": "carriers",
+          "viewLevel": 1,
+          "viewName": "Carriers"
+        },
+        "resources": {
+          "viewId": "resources",
+          "viewLevel": 2,
+          "viewName": "Resources"
+        },
+        "NotFound": {
+          "viewName": "NotFound",
+          "viewType": "XML",
+          "transition": "show",
+          "clearControlAggregation": false,
+          "viewId": "NotFound"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "bpcarriers.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

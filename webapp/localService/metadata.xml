@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="TQA.BP_CARRIERS_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="xTQAxCARRIERS_LVPType" sap:label="Data Definition for BP Carriers" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="kunnr"/>
+                </Key>
+                <Property Name="kunnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Carrier" sap:quickinfo="Customer Number"/>
+                <Property Name="name1" Type="Edm.String" MaxLength="35" sap:label="Carrier" sap:quickinfo="Name 1"/>
+                <Property Name="land1" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country" sap:quickinfo="Country/Region Key" sap:value-list="standard"/>
+                <Property Name="ort01" Type="Edm.String" MaxLength="35" sap:label="City"/>
+                <Property Name="stras" Type="Edm.String" MaxLength="35" sap:label="Adress" sap:quickinfo="Street and House Number"/>
+                <Property Name="transport_zone" Type="Edm.String" MaxLength="20" sap:label="Transport Zone" sap:quickinfo="Description"/>
+                <Property Name="stceg" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="VAT No." sap:quickinfo="VAT Registration Number"/>
+                <NavigationProperty Name="toxTQAxCARRIER_EQUIPMENTS" Relationship="TQA.BP_CARRIERS_SRV.assoc_732CF35D7B4BEF10FB8FE00B0A69A24B" FromRole="FromRole_assoc_732CF35D7B4BEF10FB8FE00B0A69A24B" ToRole="ToRole_assoc_732CF35D7B4BEF10FB8FE00B0A69A24B"/>
+                <NavigationProperty Name="toxTQAxCOUNTRIES_VH" Relationship="TQA.BP_CARRIERS_SRV.assoc_A5ED1B7C325C4AD2270C889E7B9C5AC8" FromRole="FromRole_assoc_A5ED1B7C325C4AD2270C889E7B9C5AC8" ToRole="ToRole_assoc_A5ED1B7C325C4AD2270C889E7B9C5AC8"/>
+            </EntityType>
+            <EntityType Name="xTQAxCARRIER_EQUIPMENTSType" sap:label="Data Definition for BP Carrier Equipments" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="objnr"/>
+                    <PropertyRef Name="parnr"/>
+                </Key>
+                <Property Name="objnr" Type="Edm.String" Nullable="false" MaxLength="22" sap:display-format="UpperCase" sap:label="Object No." sap:quickinfo="Object number"/>
+                <Property Name="parnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Partner No." sap:quickinfo="Partner"/>
+                <Property Name="equnr" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Equipment No." sap:quickinfo="Equipment Number"/>
+                <Property Name="eqktx" Type="Edm.String" MaxLength="40" sap:label="Equipment Description" sap:quickinfo="Description of technical object"/>
+                <Property Name="eqart" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Equipment Type" sap:quickinfo="Type of Technical Object"/>
+            </EntityType>
+            <EntityType Name="xTQAxCOUNTRIES_VHType" sap:label="Value Help for Countries" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="land1"/>
+                </Key>
+                <Property Name="land1" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Country" sap:quickinfo="Country/Region Key"/>
+                <Property Name="landx" Type="Edm.String" MaxLength="15" sap:label="Description" sap:quickinfo="Name of Country/Region (Short)"/>
+            </EntityType>
+            <Association Name="assoc_A5ED1B7C325C4AD2270C889E7B9C5AC8" sap:content-version="1">
+                <End Type="TQA.BP_CARRIERS_SRV.xTQAxCARRIERS_LVPType" Multiplicity="1" Role="FromRole_assoc_A5ED1B7C325C4AD2270C889E7B9C5AC8"/>
+                <End Type="TQA.BP_CARRIERS_SRV.xTQAxCOUNTRIES_VHType" Multiplicity="1" Role="ToRole_assoc_A5ED1B7C325C4AD2270C889E7B9C5AC8"/>
+            </Association>
+            <Association Name="assoc_732CF35D7B4BEF10FB8FE00B0A69A24B" sap:content-version="1">
+                <End Type="TQA.BP_CARRIERS_SRV.xTQAxCARRIERS_LVPType" Multiplicity="1" Role="FromRole_assoc_732CF35D7B4BEF10FB8FE00B0A69A24B"/>
+                <End Type="TQA.BP_CARRIERS_SRV.xTQAxCARRIER_EQUIPMENTSType" Multiplicity="*" Role="ToRole_assoc_732CF35D7B4BEF10FB8FE00B0A69A24B"/>
+            </Association>
+            <EntityContainer Name="TQA_BP_CARRIERS_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="xTQAxCARRIERS_LVP" EntityType="TQA.BP_CARRIERS_SRV.xTQAxCARRIERS_LVPType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xTQAxCARRIER_EQUIPMENTS" EntityType="TQA.BP_CARRIERS_SRV.xTQAxCARRIER_EQUIPMENTSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xTQAxCOUNTRIES_VH" EntityType="TQA.BP_CARRIERS_SRV.xTQAxCOUNTRIES_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_A5ED1B7C325C4AD2270C889E7B9C5AC8" Association="TQA.BP_CARRIERS_SRV.assoc_A5ED1B7C325C4AD2270C889E7B9C5AC8" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="xTQAxCARRIERS_LVP" Role="FromRole_assoc_A5ED1B7C325C4AD2270C889E7B9C5AC8"/>
+                    <End EntitySet="xTQAxCOUNTRIES_VH" Role="ToRole_assoc_A5ED1B7C325C4AD2270C889E7B9C5AC8"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_732CF35D7B4BEF10FB8FE00B0A69A24B" Association="TQA.BP_CARRIERS_SRV.assoc_732CF35D7B4BEF10FB8FE00B0A69A24B" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="xTQAxCARRIERS_LVP" Role="FromRole_assoc_732CF35D7B4BEF10FB8FE00B0A69A24B"/>
+                    <End EntitySet="xTQAxCARRIER_EQUIPMENTS" Role="ToRole_assoc_732CF35D7B4BEF10FB8FE00B0A69A24B"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="TQA.BP_CARRIERS_SRV.xTQAxCARRIERS_LVPType/land1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Value Help for Countries"/>
+                        <PropertyValue Property="CollectionPath" String="xTQAxCOUNTRIES_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="land1"/>
+                                    <PropertyValue Property="ValueListProperty" String="land1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="landx"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="TQA.BP_CARRIERS_SRV.TQA_BP_CARRIERS_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <atom:link rel="self" href="http://erpdev.rnm.local:50000/sap/opu/odata/tqa/BP_CARRIERS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://erpdev.rnm.local:50000/sap/opu/odata/tqa/BP_CARRIERS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
