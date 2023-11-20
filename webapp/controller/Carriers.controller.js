@@ -30,14 +30,6 @@ sap.ui.define([
                     this.byId("variantInput").removeStyleClass("variantModeBlack");
                     this.byId("variantInput").addStyleClass("variantMode");
                 }
-                debugger;
-                if (sessionStorage.getItem("sPathBack") != 'undefined') {
-                    var sPath = sessionStorage.getItem("sPathBack");
-                    sessionStorage.removeItem("sPathBack");
-                    if (sPath) {
-                        this.onNavigation(sPath, "resources", "/xTQAxCARRIERS_LVP");
-                    }
-                }
             },
 
             onShortcuts: function (oEvent) {

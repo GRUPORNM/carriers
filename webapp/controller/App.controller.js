@@ -24,6 +24,14 @@ sap.ui.define([
                 else {
                     sap.ui.getCore().getConfiguration().setLanguage(sessionStorage.getItem("oLangu"));
                 }
+
+                if (sessionStorage.getItem("sPathBack") != 'undefined') {
+                    var sPath = sessionStorage.getItem("sPathBack");
+                    sessionStorage.removeItem("sPathBack");
+                    if (sPath) {
+                        this.onNavigation(sPath, "resources", "/xTQAxCARRIERS_LVP");
+                    }
+                }
             }
         });
     });
