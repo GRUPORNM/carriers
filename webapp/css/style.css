@@ -49,3 +49,7 @@
     color: #91c8f6;
     text-shadow: none;
 }
+
+.sapUiBlockLayer, .sapUiLocalBusyIndicator{
+    background-color: rgba(28,34,40,0.99) !important;
+}
