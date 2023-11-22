@@ -16,12 +16,13 @@ sap.ui.define([
                 });
 
                 this.setModel(oViewModel, "Main");
-
+                sessionStorage.setItem("goToLaunchpad", "X");
                 this.getRouter().attachRouteMatched(this.getUserAuthentication, this);
                 document.addEventListener('keydown', this.onShortcuts.bind(this));
             },
 
             onAfterRendering: function () {
+                sessionStorage.setItem("goToLaunchpad", "X");
                 if (sessionStorage.getItem("selectedTheme").indexOf("dark") !== -1) {
                     this.byId("variantInput").removeStyleClass("variantMode");
                     this.byId("variantInput").addStyleClass("variantModeBlack");
