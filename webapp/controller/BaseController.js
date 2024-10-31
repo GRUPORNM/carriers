@@ -12,24 +12,21 @@ sap.ui.define([
         },
 
         setModelTQA: function (token) {
-            // ... (seu código anterior)
-
             var userLanguage = sessionStorage.getItem("oLangu");
             if (!userLanguage) {
-                userLanguage = "EN"; // Neste caso, estou definindo a língua diretamente para "FR" como no seu exemplo
+                userLanguage = "EN";
             }
             var serviceUrlWithLanguage = this.getModel().sServiceUrl + (this.getModel().sServiceUrl.includes("?") ? "&" : "?") + "sap-language=" + userLanguage;
 
             TQAModel = new sap.ui.model.odata.v2.ODataModel({
                 serviceUrl: serviceUrlWithLanguage,
-                annotationURI: "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='%2FTQA%2FOD_BP_CARRIERS_ANNO_MDL',Version='0001')/$value/",
+                annotationURI: "/zsrv_iwfnd/Annotations(TechnicalName='%2FTQA%2FOD_BP_CARRIERS_ANNO_MDL',Version='0001')/$value/",
                 headers: {
                     "authorization": token,
                     "applicationName": "CARRIERS_OVW"
                 }
             });
 
-            //Variants
             var vModel = new sap.ui.model.odata.v2.ODataModel({
                 serviceUrl: "/sap/opu/odata/TQA/OD_VARIANTS_MANAGEMENT_SRV",
                 headers: {
@@ -72,6 +69,7 @@ sap.ui.define([
         },
 
         onNavBack: function () {
+            sessionStorage.setItem("goToLaunchpad", "X");
             this.onNavigation("", "carriers", "");
         },
 
@@ -106,15 +104,13 @@ sap.ui.define([
             var oTable = this.byId(oTableID),
                 oModel = this.getModel();
 
-                debugger;
             this.byId(oTableID).getBinding("items").filter(aSearchState, "Application");
         },
 
         getUserAuthentication: function (type) {
-
-            var that = this;
-            var urlParams = new URLSearchParams(window.location.search);
-            var token = urlParams.get('token');
+            var that = this,
+                urlParams = new URLSearchParams(window.location.search),
+                token = urlParams.get('token');
 
             if (token != null) {
                 var headers = new Headers();
@@ -134,14 +130,10 @@ sap.ui.define([
                         return response.text();
                     })
                     .then(function (xml) {
-                        var parser = new DOMParser();
-                        var xmlDoc = parser.parseFromString(xml, "text/xml");
-
-                        // Na vegar até o elemento <d:SuccessResponse>
-                        var successResponseElement = xmlDoc.getElementsByTagName("d:SuccessResponse")[0];
-
-                        // Obter o valor do elemento
-                        var response = successResponseElement.textContent;
+                        var parser = new DOMParser(),
+                            xmlDoc = parser.parseFromString(xml, "text/xml"),
+                            successResponseElement = xmlDoc.getElementsByTagName("d:SuccessResponse")[0],
+                            response = successResponseElement.textContent;
 
                         if (response != 'X') {
                             that.getRouter().navTo("NotFound");
@@ -151,7 +143,6 @@ sap.ui.define([
                         }
                     })
                     .catch(function (error) {
-                        // Ocorreu um erro ao ler a entidade
                         console.error(error);
                     });
             } else {
